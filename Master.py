@@ -21,6 +21,7 @@ import pyaudio                      #de python driver autio
 import locale                       #lokale tijd instellingen
 import pyjokes                      #cabretier
 import wolframalpha                 #opnoemen van de tijd
+from ecapture import ecapture as ec #foto's maken
 
 engine = pyttsx3.init('sapi5')              #de pyttsx3 is de text to speech libtary, de sapi 5 is de Microsoft spreech
 voices = engine.getProperty('voices')       #het ophalen van de stemgeluiden
@@ -41,10 +42,10 @@ def speak(audio):                           #het instellen van de audio en sprek
 def wishMe():                                 #functie om te begroeten
 	hour = int(datetime.datetime.now().hour)  #tussen 0:00 en 12:00 goedemorgen
 	if hour>= 0 and hour<12:
-		speak("Good morning !")
+		speak("Good Morning !")
 
 	elif hour>= 12 and hour<18:               #tussen 12:00-18:00 goedemiddag
-		speak("Good afternoon !") 
+		speak("Good Afternoon !") 
 
 	else:
 		speak("Good Evening Sir !")           #de rest is goedenavond
@@ -144,11 +145,11 @@ if __name__ == '__main__':
             music_dir = "C:\\Users\\youridevos\\Music"                  #de dir waar muziek in staar
             songs = os.listdir(music_dir)                               #opent de muziekspeler            
             print(songs)        
-            random = os.startfile(os.path.join(music_dir, songs[0]))    #speelt random songs af (begint bij de eerste = 0)
- 
-        elif 'de tijd' in query:                                        #openen van de tijd door user
-            strTime = datetime.datetime.now().strftime("% H:% M:% S")   #library wordt opgehaald
-            speak(f"Sir, the time is {strTime}")                        #jarvis zegt de tijd
+            random = os.startfile(os.path.join(music_dir, songs[0]))    #speelt random songs af (begint bij de eerste = 0)                       
+        
+        elif 'de tijd' in query:                                                 #openen van de tijd door user
+            strTime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")     #library wordt opgehaald
+            speak(f"Sir, the time is {strTime}")                                 #jarvis zegt de tijd
  
         elif 'open chrome' in query:                                                        #openen van chrome door user
             codePath = r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"        #opent het code path
@@ -166,6 +167,8 @@ if __name__ == '__main__':
                 print(e)
                 speak("I am not able to send this email")       #jarvis bevestigd
  
+#-----Hele hoop standaard gedefineerde zinnen-----#
+
         elif 'hoe gaat het' in query:
             speak("I am fine, Thank you")
             speak("How are you, Sir")
@@ -214,10 +217,10 @@ if __name__ == '__main__':
             #power = r"C:\\Users\\youridevos\\Desktop\\Voice Assistant.pptx"
             #os.startfile(power)
         
-        elif 'Powerpoint' in query:
-            speak("opening Power Point presentation")
-            power = r"C:\\Users\\youridevos\\Desktop"
-            os.startfile(power)
+        #elif 'Powerpoint' in query or 'powerpoint':
+            #speak("opening Power Point presentation")
+           # power = r"C:\users\youridevos\appdata\local\packages\pythonsoftwarefoundation.python.3.9_qbz5n2kfra8p0\localcache\local-packages\python39\site-packages\VoiceAssistant.pptx"
+            #os.startfile(power)
  
         elif 'is love' in query:
             speak("It is 7th sense that destroy all other senses")
@@ -240,8 +243,7 @@ if __name__ == '__main__':
             appli = r"C:\\ProgramData\\BlueStacks\\Client\\Bluestacks.exe"
             os.startfile(appli)
  
-        elif 'nieuws' in query:
-             
+        elif 'nieuws' in query: 
             try: 
                 jsonObj = urlopen('https://newsapi.org/v2/top-headlines?country=nl&apiKey=' + newsapi)
                 data = json.load(jsonObj)
@@ -259,9 +261,31 @@ if __name__ == '__main__':
             except Exception as e:
                  
                 print(str(e))
+
  
          
-        elif 'lock window' in query:
+        elif 'sluit scherm' in query:
                 speak("locking the device")
                 ctypes.windll.user32.LockWorkStation()
+            
+        elif 'uitzetten' in query:
+                speak("Hold On a Sec ! Your system is on its way to shut down")
+                os.system('shutdown -s')
+        
+        elif "niet luisteren" in query or "stop listening" in query:
+            speak("for how much time you want to stop jarvis from listening commands")
+            a = int(takeCommand())
+            time.sleep(a)
+            print(a)
+        
+        elif "where is" in query: #werkt nietttttttttt
+            query = query.replace("where is", "")
+            location = query
+            speak("User asked to Locate")
+            speak(location)
+            webbrowser.open("https://www.google.nl / maps / place/" + location + "")
+
+        elif "camera" in query or "take a photo" in query:
+            ec.capture(0, "Jarvis Camera ", "img.jpg")
+ 
                 
