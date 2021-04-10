@@ -21,7 +21,7 @@ import pyaudio                      #de python driver autio
 import locale                       #lokale tijd instellingen
 import pyjokes                      #cabretier
 import wolframalpha                 #opnoemen van de tijd
-from ecapture import ecapture as ec #foto's maken
+from ecapture import ecapture as ec
 
 engine = pyttsx3.init('sapi5')              #de pyttsx3 is de text to speech libtary, de sapi 5 is de Microsoft spreech
 voices = engine.getProperty('voices')       #het ophalen van de stemgeluiden
@@ -286,6 +286,7 @@ if __name__ == '__main__':
             webbrowser.open("https://www.google.nl / maps / place/" + location + "")
 
         elif "camera" in query or "take a photo" in query:
-            ec.capture(0, "Jarvis Camera ", "img.jpg")
- 
+            #ec.capture(0, "Jarvis Camera ", "img.jpg")
+            (ec.capture(0,False,"img.jpg"))
+            print("Foto is gemaakt")
                 
