@@ -212,4 +212,3 @@ if __name__ == '__main__':
             except Exception as e:                              #email kan niet verstuurd worden
                 print(e)
                 speak("ik kan de mail niet versturen")       #jarvis bevestigd
-
