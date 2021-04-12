@@ -1,16 +1,67 @@
 # Project Jarvis
-Dit programma is geschreven voor de projectchallenge betreft de Applicatie-laag door Youri. 
 
-## Getting Started
+Dit programma is geschreven voor de projectchallenge betreft de Applicatie-laag door Youri.
+Python is een geschikte taal voor scriptschrijvers en ontwikkelaars. Zodanig is in deze taal de Voice Assistent geschreven.
+Spraakherkenning is het proces waarbij audio in tekst wordt omgezet. Dit wordt vaak gebruikt in stemassistenten zoals Alex en Siri. Python biedt een API genaamd SpeechRecognition waarmee audio in tekst wordt gezet om te kunnen converteren voor verdere verwerking.
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+## Vereisten
+
+**De volgende modules en (pip)installaties zijn benodigd, vooralsnog het script werkt.**
+
+*Subproces:* - Deze module wordt gebruikt voor het verkrijgen van systeemsubprocesdetails die worden gebruikt in verschillende opdrachten, zoals afsluiten, slapen, enz. Deze module is ingebouwd met Python.
+
+*Wolframalpha:* - Het wordt gebruikt om antwoorden op expertniveau te berekenen met behulp van Wolfram's algoritmen, kennisbank en AI-technologie. Typ het onderstaande commando in de terminal om deze module te installeren.
+```
+pip3 install wolframaplha
+```
+*gTTS* - (Google Text-to-Speech), een Python-bibliotheek en CLI-tool om te communiceren met de tekst-naar-spraak-API van Google Translate. Schrijf gesproken mp3-gegevens naar een bestand, een bestandachtig object (bytestring) voor verdere audiomanipulatie, of stdout. Of genereer eenvoudig vooraf Google Translate TTS-verzoek-URL's om naar een extern programma te sturen.
+```
+pip3 install gtts
+```
+
+*Tkinter:* - Deze module wordt gebruikt voor het bouwen van GUI en wordt geleverd met Python. Deze module is ingebouwd met Python.
+
+*Wikipedia:* - Zoals we allemaal weten, is Wikipedia een geweldige bron van kennis, net als GeeksforGeeks, we hebben de Wikipedia-module gebruikt om informatie uit Wikipedia te halen of om Wikipedia-zoekopdrachten uit te voeren. Typ het onderstaande commando in de terminal om deze module te installeren.
+```
+pip3 install wikipedia
+```
+*Spraakherkenning:* - Aangezien we een toepassing van stemassistent bouwen, is een van de belangrijkste dingen hierin dat uw assistent uw stem herkent (betekent wat u wilt zeggen / vragen). Typ het onderstaande commando in de terminal om deze module te installeren.
+```
+pip3 installeer SpeechRecognition
+```
+*Webbrowser:* - Om op internet te zoeken. Deze module is ingebouwd met Python.
+ 
+*Ecapture:* - Om afbeeldingen van uw camera vast te leggen. Typ het onderstaande commando in de terminal om deze module te installeren.
+```
+pip3 installeer ecapture
+```
+
+*Pyjokes:* - Pyjokes wordt gebruikt voor het verzamelen van Python-grappen via internet. Typ het onderstaande commando in de terminal om deze module te installeren.
+pip pyjokes installeren
+
+*Datetime:* - Datum en tijd wordt gebruikt om datum en tijd weer te geven. Deze module is ingebouwd met Python. 
+
+*Twilio:* - Twilio wordt gebruikt voor het maken van oproepen en berichten. Typ het onderstaande commando in de terminal om deze module te installeren.
+```
+pip3 install twilio
+```
+
+*Requests:* - Requests worden gebruikt voor het doen van GET- en POST-verzoeken. Typ het onderstaande commando in de terminal om deze module te installeren.
+```
+pip3 install requests
+```
+
+*BeautifulSoup:* - Beautiful Soup is een bibliotheek die het gemakkelijk maakt om informatie van webpagina's te schrapen. Typ het onderstaande commando in de terminal om deze module te installeren.
+```
+pip install beautifulsoup4
+```
 
 ### Voorbereiding
 
 Deze pip installaties moeten worden gedaan, om het programma werkend te krijgen:
 
 ```
-Give examples
+
 ```
 
 ### Installing
