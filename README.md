@@ -19,7 +19,7 @@ Microsoft Visual studio
 
 **De volgende modules en (pip)installaties zijn benodigd, vooralsnog het script werkt.**
 
-Om het project werkend te laten krijgen, moeten allereerst de volgende modules worden geinstalleerd middels pip. Pip is te installeren middels de volgende handleiding: <https://phoenixnap.com/kb/install-pip-windows>
+Om het project werkend te laten krijgen, moeten allereerst de volgende modules worden geinstalleerd middels pip.
 
 *Subproces:* - Deze module wordt gebruikt voor het verkrijgen van systeemsubprocesdetails die worden gebruikt in verschillende opdrachten, zoals afsluiten, slapen, enz. Deze module is ingebouwd met Python.
 
@@ -136,7 +136,5 @@ Versiebeheer wordt bijgehouden in GitHub. Voor alle versies kan de [GitHub](http
 ## Acknowledgments
 
 * Iron Man the movie
-
 * Bjorn Hamels
-
 * Richard Stam
