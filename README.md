@@ -6,62 +6,78 @@ Spraakherkenning is het proces waarbij audio in tekst wordt omgezet. Dit wordt v
 
 ## Vereisten
 
+### Systeemvereisten
+
+Windows 10 versie
+21H1
+
+Python 3.9+
+
+Microsoft Visual studio
+
+### Modules
+
 **De volgende modules en (pip)installaties zijn benodigd, vooralsnog het script werkt.**
+
+Om het project werkend te laten krijgen, moeten allereerst de volgende modules worden geinstalleerd middels pip. Pip is te installeren middels de volgende handleiding: <https://phoenixnap.com/kb/install-pip-windows>
 
 *Subproces:* - Deze module wordt gebruikt voor het verkrijgen van systeemsubprocesdetails die worden gebruikt in verschillende opdrachten, zoals afsluiten, slapen, enz. Deze module is ingebouwd met Python.
 
 *Wolframalpha:* - Het wordt gebruikt om antwoorden op expertniveau te berekenen met behulp van Wolfram's algoritmen, kennisbank en AI-technologie. Typ het onderstaande commando in de terminal om deze module te installeren.
-```
+
+```md
 pip3 install wolframaplha
 ```
+
 *gTTS* - (Google Text-to-Speech), een Python-bibliotheek en CLI-tool om te communiceren met de tekst-naar-spraak-API van Google Translate. Schrijf gesproken mp3-gegevens naar een bestand, een bestandachtig object (bytestring) voor verdere audiomanipulatie, of stdout. Of genereer eenvoudig vooraf Google Translate TTS-verzoek-URL's om naar een extern programma te sturen.
-```
+
+```md
 pip3 install gtts
 ```
 
 *Tkinter:* - Deze module wordt gebruikt voor het bouwen van GUI en wordt geleverd met Python. Deze module is ingebouwd met Python.
 
 *Wikipedia:* - Zoals we allemaal weten, is Wikipedia een geweldige bron van kennis, net als GeeksforGeeks, we hebben de Wikipedia-module gebruikt om informatie uit Wikipedia te halen of om Wikipedia-zoekopdrachten uit te voeren. Typ het onderstaande commando in de terminal om deze module te installeren.
-```
+
+```md
 pip3 install wikipedia
 ```
+
 *Spraakherkenning:* - Aangezien we een toepassing van stemassistent bouwen, is een van de belangrijkste dingen hierin dat uw assistent uw stem herkent (betekent wat u wilt zeggen / vragen). Typ het onderstaande commando in de terminal om deze module te installeren.
-```
+
+```md
 pip3 installeer SpeechRecognition
 ```
+
 *Webbrowser:* - Om op internet te zoeken. Deze module is ingebouwd met Python.
- 
+
 *Ecapture:* - Om afbeeldingen van uw camera vast te leggen. Typ het onderstaande commando in de terminal om deze module te installeren.
-```
+
+```md
 pip3 installeer ecapture
 ```
 
 *Pyjokes:* - Pyjokes wordt gebruikt voor het verzamelen van Python-grappen via internet. Typ het onderstaande commando in de terminal om deze module te installeren.
 pip pyjokes installeren
 
-*Datetime:* - Datum en tijd wordt gebruikt om datum en tijd weer te geven. Deze module is ingebouwd met Python. 
+*Datetime:* - Datum en tijd wordt gebruikt om datum en tijd weer te geven. Deze module is ingebouwd met Python.
 
 *Twilio:* - Twilio wordt gebruikt voor het maken van oproepen en berichten. Typ het onderstaande commando in de terminal om deze module te installeren.
-```
+
+```md
 pip3 install twilio
 ```
 
 *Requests:* - Requests worden gebruikt voor het doen van GET- en POST-verzoeken. Typ het onderstaande commando in de terminal om deze module te installeren.
-```
+
+```md
 pip3 install requests
 ```
 
 *BeautifulSoup:* - Beautiful Soup is een bibliotheek die het gemakkelijk maakt om informatie van webpagina's te schrapen. Typ het onderstaande commando in de terminal om deze module te installeren.
-```
+
+```md
 pip install beautifulsoup4
-```
-
-### Voorbereiding
-
-Deze pip installaties moeten worden gedaan, om het programma werkend te krijgen:
-
-```
-
 ```
 
 ### Installing
@@ -70,68 +86,57 @@ A step by step series of examples that tell you how to get a development env run
 
 Say what the step will be
 
-```
-Give the example
-```
+```md
+Luisteren ... 
+Herkennen ... 
+Gebruiker zei: Youri
+##################### 
+Welkom meneer Youri 
+##################### 
+Luisteren ... 
+Herkennen ... 
+Gebruiker zei: Youri op Wikipedia
+Joeri, Yoeri en Yuri zijn Nederlandse jongensnamen die afkomstig zijn van de Slavische naam Юрий die 'Bewerker van de aarde' betekent.
+Luisteren ... 
+Herkennen ... 
+Gebruiker zei: open YouTube
+Luisteren ... 
+Herkennen ...
+Kan je stem niet herkennen. 
+Luisteren ... 
+Herkennen ... 
+Gebruiker zei: exit
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
+en herhaal
 ```
 
-## Deployment
+## Aanvulling van code
 
-Add additional notes about how to deploy this on a live system
+Om de code aan te vullen, kan het volgende statement worden toegevoegd:
 
-## Built With
+```md
+elif ... in text:
+    commando invoeren
+```
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+## Gemaakt met
 
-## Contributing
+* [gTTS](https://gtts.readthedocs.io/en/latest/) - Google Text-to-Speech
+* [News Api](https://newsapi.org/) - Nederlands nieuws
+* [Wolframalpha](https://www.wolframalpha.com/) - Computer expert-level answers
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+## Versiebeheer
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+Versiebeheer wordt bijgehouden in GitHub. Voor alle versies kan de [GitHub](https://github.com/infraendboss/JarvisVoiceAssistent) geraadpleegd worden.
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+* **Youri de Vos** - [GitHub](https://gist.github.com/infraendboss)
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Iron Man the movie
+
+* Bjorn Hamels
+
+* Richard Stam
