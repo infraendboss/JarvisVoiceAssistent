@@ -5,19 +5,15 @@ import speech_recognition as sr
 from gtts import gTTS
 import subprocess                   #het werken met verschillende processen (OS)
 import pyttsx3                      #text to speech  library
-#from gtts import gTTS              #in aanbouw
 import tkinter                      #gebruiks interface maken     
 import json                         #jAVASCRIPT module
 import random                       #random class, random bepalingen
 import operator                     #+,-,**. (voor de operatoren)
-import speech_recognition as sr     #herkennen van speech 
 from datetime import datetime
 import wikipedia                    #voor het opzoeken van wiki stukke 
 import webbrowser                   #het openen van webbrowsers
-import os                           #het werkend maken van de os in python
 import smtplib                      #smtp protocol om mails te sturen
 import ctypes                       #het gebruik van van de c library
-import time                         #het gebruik maken van tijd
 import requests                     #voor de http bibliotheek
 import shutil                       #het uitztten van het systeem
 from bs4 import BeautifulSoup       #het gebruik van HTML files
