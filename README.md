@@ -119,11 +119,12 @@ elif ... in text:
     commando invoeren
 ```
 
-## Gemaakt met
+## Bronnen
 
 * [gTTS](https://gtts.readthedocs.io/en/latest/) - Google Text-to-Speech
 * [News Api](https://newsapi.org/) - Nederlands nieuws
 * [Wolframalpha](https://www.wolframalpha.com/) - Computer expert-level answers
+* [GeeksforGeeks](https://www.geeksforgeeks.org/voice-assistant-using-python/) - Jarvis Assistent
 
 ## Versiebeheer
 

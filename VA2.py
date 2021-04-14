@@ -1,5 +1,4 @@
-#Voor extra informatie kan de README file gelezen worden
-#Bronnen: 
+#Voor extra informatie kan de README file gelezen worden betreft deze epische Voice Assistent
 
 import os
 import time
@@ -171,21 +170,21 @@ if __name__ == '__main__':
             speak("ik heb je achtergrond veranderd")
 
         elif "waar is" in text: #werkt nu wel
-            query = text.replace("waar is", "")
+            query = text.replace("waar is", "")                                 #verplaatst "waar is" in bestand
             speak(f"Gebruiker vraagt naar locatie {query}")
-            webbrowser.open("https://www.google.nl/maps/place/" + query + "")
+            webbrowser.open("https://www.google.nl/maps/place/" + query + "")   #zoekt op base url icm query
 
         elif "camera" in text or "foto" in text:
             #(ec.capture(0, "Jarvis Camera ", "img.jpg")
-            (ec.capture(0,False,"img.jpg"))
-            print("Foto is gemaakt")
+            (ec.capture(0,False,"img.jpg"))         #nmaakt foto onder naam img.jpg
+            speak("Foto is gemaakt")
 
         elif "maak een notitie" in text:
-            speak("wat moet ik noteren")
+            speak("wat moet ik noteren?")
             note = get_audio()
-            file = open('jarvis.txt', 'w')
+            file = open('jarvis.txt', 'w')      #creeerd een file jarvis.txt
             speak("Moet ik de datum en tijd bijvoegen")
-            snfm = get_audio()
+            snfm = get_audio()                  #vraagt naar datum en tijd
             if 'ja' in snfm or 'okay' in snfm:
                 strTime = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
                 file.write(strTime)
@@ -211,6 +210,8 @@ if __name__ == '__main__':
             except Exception as e:                              #email kan niet verstuurd worden
                 print(e)
                 speak("ik kan de mail niet versturen")       #jarvis bevestigd
+
+    
 
         elif "weer" in text:
              
@@ -264,4 +265,6 @@ if __name__ == '__main__':
                                 str(weather_description))
             
         else:
-            print(" City Not Found ")
+            print(" Stad niet gevonden ")
+        
+
