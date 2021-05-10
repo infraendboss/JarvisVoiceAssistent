@@ -66,7 +66,7 @@ def get_audio():
             print(said)
 
         except Exception as e:
-            print("Exception: " + str(e))
+            print("Ik heb u niet gehoord" + str(e))
 
     return said
 
@@ -264,7 +264,15 @@ if __name__ == '__main__':
                     "\n Weersbeschrijving = " +
                                 str(weather_description))
             
-        else:
-            print(" Stad niet gevonden ")
-        
+            else:
+                print(" Stad niet gevonden ")
 
+        elif "nas" in text:
+            ip_list = ['8.8.8.8']
+            for ip in ip_list:
+                response = os.popen(f"ping {ip}").read()
+                if "Received = 4" in response:
+                    speak(f"UP {ip} de nas is bereikbaar")
+                    print('NAS bereikbaar')
+                else:
+                    print(f"DOWN {ip} Ping Unsuccessful")
