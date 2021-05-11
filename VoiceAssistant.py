@@ -26,6 +26,9 @@ import locale                       #lokale tijd instellingen
 #import pyjokes                      #cabretier
 #import wolframalpha                 #opnoemen van de tijd
 #from ecapture import ecapture as ec #camera
+from ip_address import bridge_ip_address
+from phue import Bridge
+
 
 def takeCommand():
 	r = sr.Recognizer()
@@ -297,3 +300,27 @@ if __name__ == '__main__':
                     except:
                         print("ERROR")
                     break
+
+        elif 'lampen' in text:
+
+            def access_lights(bridge_ip_address):
+                b = Bridge(bridge_ip_address)
+                light_names_list = b.get_light_objects('name')
+                return light_names_list
+
+            def danger_mode():
+                lights = access_lights(bridge_ip_address)
+                while True:
+                    time.sleep(1)
+                    for light in lights:
+                        lights[light].on = True
+                        lights[light].hue = 180
+                        lights[light].saturation = 100
+                    time.sleep(1)
+                    for light in lights:
+                        lights[light].on = True
+                        lights[light].hue = 7000
+                        lights[light].saturation = 100
+
+            if __name__ == '__main__':
+                danger_mode()
