@@ -276,3 +276,24 @@ if __name__ == '__main__':
                     print('NAS bereikbaar')
                 else:
                     print(f"DOWN {ip} Ping Unsuccessful")
+
+            elif 'auto' in text or 'machine' in text:  
+                headers = CaseInsensitiveDict()
+                headers["Authorization"] = "Basic c3R1ZGVudDpCbG9lbXBvdDEh"
+                while True:
+                    try:
+                        url = "http://127.0.0.1:8697/api/vms"
+                        resp = requests.get(url, headers=headers)
+                        jsonData = json.loads(resp.text)
+                        for id in jsonData:
+                            id = id['id']
+                        print(f"ID: {id}")
+                        
+                        url2 = f"http://127.0.0.1:8697/api/vms/{id}/power"
+                        resp2 = requests.get(url2, headers=headers)
+                        jsonData2 = json.loads(resp2.text)
+                        speak(f"STATUS: {jsonData2['power_state']}")
+                        time.sleep(3)
+                    except:
+                        print("ERROR")
+                    break
