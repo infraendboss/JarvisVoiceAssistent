@@ -6,7 +6,7 @@ import playsound
 import speech_recognition as sr
 from gtts import gTTS
 import subprocess                   #het werken met verschillende processen (OS)
-import pyttsx3                      #text to speech  library
+#import pyttsx3                      #text to speech  library
 import tkinter                      #gebruiks interface maken     
 import json                         #jAVASCRIPT module
 import random                       #random class, random bepalingen
@@ -23,8 +23,8 @@ from bs4 import BeautifulSoup       #het gebruik van HTML files
 from urllib.request import urlopen  #voor het openen van urls
 import pyaudio                      #de python driver autio 
 import locale                       #lokale tijd instellingen
-import pyjokes                      #cabretier
-import wolframalpha                 #opnoemen van de tijd
+#import pyjokes                      #cabretier
+#import wolframalpha                 #opnoemen van de tijd
 #from ecapture import ecapture as ec #camera
 
 def takeCommand():
@@ -277,7 +277,7 @@ if __name__ == '__main__':
                 else:
                     print(f"DOWN {ip} Ping Unsuccessful")
 
-            elif 'auto' in text or 'machine' in text:  
+        elif 'auto' in text or 'machine' in text:  
                 headers = CaseInsensitiveDict()
                 headers["Authorization"] = "Basic c3R1ZGVudDpCbG9lbXBvdDEh"
                 while True:
