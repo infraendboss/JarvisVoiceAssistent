@@ -25,7 +25,7 @@ import pyaudio                      #de python driver autio
 import locale                       #lokale tijd instellingen
 #import pyjokes                      #cabretier
 #import wolframalpha                 #opnoemen van de tijd
-#from ecapture import ecapture as ec #camera
+from ecapture import ecapture as ec #camera
 from ip_address import bridge_ip_address
 from phue import Bridge
 
