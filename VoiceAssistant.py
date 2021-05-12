@@ -24,6 +24,7 @@ import locale                       #lokale tijd instellingen
 from ecapture import ecapture as ec #camera
 from ip_address import bridge_ip_address
 from phue import Bridge
+from requests.structures import CaseInsensitiveDict
 
 
 def takeCommand():
@@ -40,7 +41,7 @@ def speak(text):
     tts = gTTS(text=text, lang="nl")
     date_string = datetime.now().strftime("%d%m%Y%H%M%S")
     filename = "voice"+date_string+".mp3"
-    tts.save(f"C:\\Users\\youri,{filename}")
+    tts.save(filename)
     playsound.playsound(filename)
 
 def sendEmail(to, content):                             #gebruik de email library
@@ -300,30 +301,41 @@ if __name__ == '__main__':
         elif 'auto' in text or 'machine' in text:  
                 headers = CaseInsensitiveDict()
                 headers["Authorization"] = "Basic c3R1ZGVudDpCbG9lbXBvdDEh"
-                while True:
-                    try:
-                        url = "http://127.0.0.1:8697/api/vms"
-                        resp = requests.get(url, headers=headers)
-                        jsonData = json.loads(resp.text)
-                        for id in jsonData:
-                            id = id['id']
-                        print(f"ID: {id}")
-                        
-                        url2 = f"http://127.0.0.1:8697/api/vms/{id}/power"
-                        resp2 = requests.get(url2, headers=headers)
-                        jsonData2 = json.loads(resp2.text)
-                        speak(f"STATUS: {jsonData2['power_state']}")
-                        time.sleep(3)
-                    except:
-                        print("ERROR")
-                    break
+                urlID = "http://127.0.0.1:8697/api/vms"
+                resp = requests.get(urlID, headers=headers)
+                jsonDataID = json.loads(resp.text)
+                try:
+                    for id in jsonDataID:
+                        id = id['id']
+                        urlStatus = f"http://127.0.0.1:8697/api/vms/{id}/power"
+                        resp2 = requests.get(urlStatus, headers=headers)
+                        jsonDataStatus = json.loads(resp2.text)
+                        print(f"ID: {id} STATUS: {jsonDataStatus['power_state']}")
+                        speak(f"STATUS: {jsonDataStatus['power_state']}")
+                except Exception:
+                    print("ERROR")
+
+        elif 'uit' in text:  
+                headers = CaseInsensitiveDict()
+                headers["Authorization"] = "Basic c3R1ZGVudDpCbG9lbXBvdDEh"
+                urlID = "http://127.0.0.1:8697/api/vms"
+                resp = requests.get(urlID, headers=headers)
+                jsonDataID = json.loads(resp.text)
+                try:
+                    for id in jsonDataID:
+                        id = id['id']
+                        urlStatus = f"http://127.0.0.1:8697/api/vms/{id}/power"
+                        resp2 = requests.get(urlStatus, headers=headers)
+                        jsonDataStatus = json.loads(resp2.text)
+                        print(f"ID: {id} STATUS: {jsonDataStatus['power_state']}")
+                        speak(f"STATUS: {jsonDataStatus['power_state']}")
+                except Exception:
+                    print("ERROR")
 
         elif 'lampen aan' in text or 'disco' in text:
             if __name__ == '__main__':
                 danger_mode()
                 speak('ik zet de lampen aan')
-            else:
-                speak('ik kan de lampen niet aanzetten')
 
         elif 'lampen uit' in text: 
             if __name__ == '__main__':
