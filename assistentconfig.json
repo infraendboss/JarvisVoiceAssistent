@@ -1,5 +1,12 @@
-{ 
-    "mailPassword": "soepkip360",
-    "mail": "jarvis.assistant.python@gmail.com",
-    "newsapi": "529282d642c34cbda1b35aac5aec8efa"
+{
+    "mail": {
+        "mailPassword": "soepkip360",
+        "email": "jarvis.assistant.python@gmail.com"
+    },
+    "nieuws": {
+        "newsapi": "529282d642c34cbda1b35aac5aec8efa"
+    },
+    "weer": {
+        "weerapi": "b7688b61e3c305e8d97e59c2398e74d4"
+    }
 }

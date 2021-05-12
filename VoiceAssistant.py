@@ -31,15 +31,16 @@ def takeCommand():
 
 with open('assistentconfig.json') as bestand:
     config = json.load(bestand)
-gmailpassword = config['mailPassword']
-mail = config['mail']
-newsapi = config['newsapi']
+gmailpassword = config["mail"]['mailPassword']
+mail = config['mail']["email"]
+newsapi = config["nieuws"]['newsapi']
+weerapi = config["weer"]['weerapi']
 
 def speak(text):
     tts = gTTS(text=text, lang="nl")
     date_string = datetime.now().strftime("%d%m%Y%H%M%S")
     filename = "voice"+date_string+".mp3"
-    tts.save(filename)
+    tts.save(f"C:\\Users\\youri,{filename}")
     playsound.playsound(filename)
 
 def sendEmail(to, content):                             #gebruik de email library
@@ -69,15 +70,11 @@ def danger_mode():
         lights[light].on = True
         lights[light].hue = 7000
         lights[light].saturation = 100
+
 def uit():
     lights = access_lights(bridge_ip_address)
     for light in lights:
         lights[light].on = False
-
-
-
-
-
 
 def get_audio():
     r = sr.Recognizer()
@@ -238,15 +235,13 @@ if __name__ == '__main__':
     
 
         elif "weer" in text:
-             
             # Google Open weather website
             # to get API of Open weather
-            api_key = "b7688b61e3c305e8d97e59c2398e74d4"
             base_url = "https://api.openweathermap.org/data/2.5/weather?"
             speak(" Stad naam ")
             print("Stad naam : ")
             city_name = get_audio()
-            complete_url = base_url + "appid=" + api_key + "&q=" + city_name
+            complete_url = base_url + "appid=" + weerapi + "&q=" + city_name
             response = requests.get(complete_url)
             x = response.json()
 
@@ -291,15 +286,16 @@ if __name__ == '__main__':
             else:
                 print(" Stad niet gevonden ")
 
-        elif "nas" in text:
-            ip_list = ['8.8.8.8']
+        elif "servers" in text or "server" in text:
+            ip_list = ['192.168.1.239', '192.168.1.244', '192.168.1.1', '192.168.1.211']
             for ip in ip_list:
                 response = os.popen(f"ping {ip}").read()
-                if "Received = 4" in response:
-                    speak(f"UP {ip} de nas is bereikbaar")
-                    print('NAS bereikbaar')
+                if "Approximate round trip times in milli-seconds" in response:
+                    speak(f"UP {ip} deze server is bereikbaar")
+                    print(f"UP {ip} deze server is bereikbaar")
                 else:
-                    print(f"DOWN {ip} Ping Unsuccessful")
+                    speak(f"DOWN {ip} de server is niet bereikbaar")
+                    print(f"DOWN {ip} deze server is niet bereikbaar")
 
         elif 'auto' in text or 'machine' in text:  
                 headers = CaseInsensitiveDict()
