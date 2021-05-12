@@ -30,5 +30,12 @@ def danger_mode():
             lights[light].hue = 7000
             lights[light].saturation = 100
 
+def uit():
+    lights = access_lights(bridge_ip_address)
+    for light in lights:
+        lights[light].on = False
+
+
+
 if __name__ == '__main__':
-    danger_mode()
+    uit()

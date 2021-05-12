@@ -6,7 +6,6 @@ import playsound
 import speech_recognition as sr
 from gtts import gTTS
 import subprocess                   #het werken met verschillende processen (OS)
-#import pyttsx3                      #text to speech  library
 import tkinter                      #gebruiks interface maken     
 import json                         #jAVASCRIPT module
 import random                       #random class, random bepalingen
@@ -19,12 +18,9 @@ import ctypes                       #het gebruik van van de c library
 import requests                     #voor de http bibliotheek
 import shutil                       #het uitztten van het systeem
 from bs4 import BeautifulSoup       #het gebruik van HTML files
-#import win32com.client as wincl     #text to speech api
 from urllib.request import urlopen  #voor het openen van urls
 import pyaudio                      #de python driver autio 
 import locale                       #lokale tijd instellingen
-#import pyjokes                      #cabretier
-#import wolframalpha                 #opnoemen van de tijd
 from ecapture import ecapture as ec #camera
 from ip_address import bridge_ip_address
 from phue import Bridge
@@ -55,6 +51,31 @@ def sendEmail(to, content):                             #gebruik de email librar
 	server.login(mail, gmailpassword)
 	server.sendmail(mail, to, content)
 	server.close()
+
+def access_lights(bridge_ip_address):
+    b = Bridge(bridge_ip_address)
+    light_names_list = b.get_light_objects('name')
+    return light_names_list
+
+def danger_mode():
+    lights = access_lights(bridge_ip_address)
+    time.sleep(1)
+    for light in lights:
+        lights[light].on = True
+        lights[light].hue = 180
+        lights[light].saturation = 100
+    time.sleep(1)
+    for light in lights:
+        lights[light].on = True
+        lights[light].hue = 7000
+        lights[light].saturation = 100
+def uit():
+    lights = access_lights(bridge_ip_address)
+    for light in lights:
+        lights[light].on = False
+
+
+
 
 
 
@@ -238,7 +259,7 @@ if __name__ == '__main__':
                 # store the value corresponding
                 # to the "temp" key of y
                 current_temperature = y["temp"]
-                current_temperature = current_temperature - 273.15
+                current_temperature = current_temperature - 273
             
                 # store the value corresponding
                 # to the "pressure" key of y
@@ -301,26 +322,15 @@ if __name__ == '__main__':
                         print("ERROR")
                     break
 
-        elif 'lampen' in text:
-
-            def access_lights(bridge_ip_address):
-                b = Bridge(bridge_ip_address)
-                light_names_list = b.get_light_objects('name')
-                return light_names_list
-
-            def danger_mode():
-                lights = access_lights(bridge_ip_address)
-                while True:
-                    time.sleep(1)
-                    for light in lights:
-                        lights[light].on = True
-                        lights[light].hue = 180
-                        lights[light].saturation = 100
-                    time.sleep(1)
-                    for light in lights:
-                        lights[light].on = True
-                        lights[light].hue = 7000
-                        lights[light].saturation = 100
-
+        elif 'lampen aan' in text or 'disco' in text:
             if __name__ == '__main__':
                 danger_mode()
+                speak('ik zet de lampen aan')
+            else:
+                speak('ik kan de lampen niet aanzetten')
+
+        elif 'lampen uit' in text: 
+            if __name__ == '__main__':
+                uit()
+            else:
+                speak('ik kan de lampen niet uitzetten')
