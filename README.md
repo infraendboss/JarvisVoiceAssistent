@@ -125,7 +125,7 @@ elif ... in text:
 * [News Api](https://newsapi.org/) - Nederlands nieuws
 * [Wolframalpha](https://www.wolframalpha.com/) - Computer expert-level answers
 * [GeeksforGeeks](https://www.geeksforgeeks.org/voice-assistant-using-python/) - Jarvis Assistent
-* [Weather Api] (https://openweathermap.org/) - Weer opvragen 
+* [Weather Api](https://openweathermap.org/) - Weer API
 
 ## Versiebeheer
 
