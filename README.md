@@ -139,5 +139,5 @@ Versiebeheer wordt bijgehouden in GitHub. Voor alle versies kan de [GitHub](http
 ## Acknowledgments
 
 * Iron Man the movie
-* Bjorn Hamels
-* Richard Stam
+* Bjorn 
+* Richard 
