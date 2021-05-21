@@ -1,0 +1,12 @@
+{
+    "mail": {
+        "mailPassword": "Enter email password here",
+        "email": "Enter mail address here "
+    },
+    "nieuws": {
+        "newsapi": "Enter newsapi key here from newsapi.org"
+    },
+    "weer": {
+        "weerapi": "Enter weatherapi here from openweather.org"
+    }
+}
