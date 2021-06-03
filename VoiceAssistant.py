@@ -22,12 +22,12 @@ import pyaudio                      #de python driver autio
 import locale                       #lokale tijd instellingen
 from ecapture import ecapture as ec #camera
 from ip_address import bridge_ip_address    
-from phue import Bridge             #Paansturen van lampen
+from phue import Bridge             #aansturen van lampen
 from requests.structures import CaseInsensitiveDict
 
 
 def takeCommand():
-	r = sr.Recognizer()             #aansturen van de microfoon 
+	r = sr.Recognizer()                         #aansturen van de microfoon 
 
 with open('assistentconfig.json') as bestand:   #openen config bestand
     config = json.load(bestand)
@@ -37,10 +37,10 @@ newsapi = config["nieuws"]['newsapi']
 weerapi = config["weer"]['weerapi']
 
 def speak(text):
-    tts = gTTS(text=text, lang="nl")            #bepaling taal voor gtts
+    tts = gTTS(text=text, lang="nl")                        #bepaling taal voor gtts
     date_string = datetime.now().strftime("%d%m%Y%H%M%S")   #slaat bestanden op met datum tijd
-    filename = "voice"+date_string+".mp3"       #filename wordt gecreeeerd
-    tts.save(filename)                          #file wordt opgeslagen
+    filename = "voice"+date_string+".mp3"                   #filename wordt gecreeeerd
+    tts.save(filename)                                      #file wordt opgeslagen
     playsound.playsound(filename)
 
 def sendEmail(to, content):                             #gebruik de email library
@@ -137,7 +137,7 @@ if __name__ == '__main__':                          #zorgt ervoor dat clear scre
             speak("Mijn naam is Youri ")
         elif "Hoe ben je gemaakt" in text:
             speak("Door Youri zijn Python skills")
-        elif 'open YouTube' in text:                 #openen van youtube door user
+        elif 'open YouTube' in text:                  #openen van youtube door user
             speak("lekker filmpjes kijken\n")         #wordt gezegd door jarvis
             webbrowser.open("youtube.com")            #openen door webbrowser libbrary
 
@@ -171,9 +171,9 @@ if __name__ == '__main__':                          #zorgt ervoor dat clear scre
             speak("Lekker coderen met de codeerbeer")
             webbrowser.open("stackoverflow.com")                
 
-        elif 'tijd' in text:                                                 #openen van de tijd door user
+        elif 'tijd' in text:                                            #openen van de tijd door user
             strTime = datetime.now().strftime("%d-%m-%Y  %H:%M:%S")     #library wordt opgehaald
-            speak(f"Youri de tijd is {strTime}")                                 #jarvis zegt de tijd
+            speak(f"Youri de tijd is {strTime}")                        #jarvis zegt de tijd
 
         elif 'open youtube' in text:                 #openen van youtube door user
             speak("lekker Youtuben\n")               #wordt gezegd door jarvis
@@ -181,7 +181,7 @@ if __name__ == '__main__':                          #zorgt ervoor dat clear scre
 
         elif 'speel muziek' in text or "Speel een nummer" in text:    #openen van muziek door user
             speak("lekker muziekjes luisteren")   
-            os.startfile('C:\\Users\\Youri\\Music\\muziek.mp3')                          #jarvis bevestigd 
+            os.startfile('C:\\Users\\Youri\\Music\\muziek.mp3')       #jarvis bevestigd 
                 
         elif 'achtergrond' in text:
             ctypes.windll.user32.SystemParametersInfoW(20, 
@@ -223,11 +223,11 @@ if __name__ == '__main__':                          #zorgt ervoor dat clear scre
         elif 'verstuur mail' in text:                          #openen van mail door user
             try:
                 speak("wat moet ik zeggen")                     #jarvis vraagt om text in mail
-                content = get_audio()                         #vraagt voor commando en vult dit in in terminal
-                speak("naar wie moet ik het versturen")                    #jarvis vraagt om geadresseerde
+                content = get_audio()                           #vraagt voor commando en vult dit in in terminal
+                speak("naar wie moet ik het versturen")         #jarvis vraagt om geadresseerde
                 to = input()                                    #je kan zelf het mail adres intypen door middel van input
                 sendEmail(to, content)                          #versturen van de mail middels librarys
-                speak("de email is verstuurd!")                  #jarvis bevestigd
+                speak("de email is verstuurd!")                 #jarvis bevestigd
             except Exception as e:                              #email kan niet verstuurd worden
                 print(e)
                 speak("ik kan de mail niet versturen")       #jarvis bevestigd
@@ -303,9 +303,9 @@ if __name__ == '__main__':                          #zorgt ervoor dat clear scre
                 jsonDataID = json.loads(resp.text)
                 try:
                     for id in jsonDataID:
-                        id = id['id']                                           #haalt het id van de vm op
+                        id = id['id']                                               #haalt het id van de vm op
                         urlStatus = f"http://127.0.0.1:8697/api/vms/{id}/power"  
-                        resp2 = requests.get(urlStatus, headers=headers)        #naalt de waarde powerstate op
+                        resp2 = requests.get(urlStatus, headers=headers)            #naalt de waarde powerstate op
                         jsonDataStatus = json.loads(resp2.text)
                         print(f"ID: {id} STATUS: {jsonDataStatus['power_state']}")  #koppelt de waardes 
                         speak(f"STATUS: {jsonDataStatus['power_state']}")

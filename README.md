@@ -140,3 +140,5 @@ Versiebeheer wordt bijgehouden in GitHub. Voor alle versies kan de [GitHub](http
 * Iron Man the movie
 * Bjorn Hamels
 * Richard Stam
+* Thomas Sauijp
+
