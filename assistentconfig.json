@@ -1,12 +1,12 @@
 {
     "mail": {
-        "mailPassword": "soepkip360",
-        "email": "jarvis.assistant.python@gmail.com"
+        "mailPassword": "Enter email password here",
+        "email": "Enter mail address here "
     },
     "nieuws": {
-        "newsapi": "529282d642c34cbda1b35aac5aec8efa"
+        "newsapi": "Enter newsapi key here from newsapi.org"
     },
     "weer": {
-        "weerapi": "b7688b61e3c305e8d97e59c2398e74d4"
+        "weerapi": "Enter weatherapi here from openweather.org"
     }
 }

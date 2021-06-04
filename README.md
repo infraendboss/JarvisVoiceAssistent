@@ -126,6 +126,10 @@ elif ... in text:
 * [Wolframalpha](https://www.wolframalpha.com/) - Computer expert-level answers
 * [GeeksforGeeks](https://www.geeksforgeeks.org/voice-assistant-using-python/) - Jarvis Assistent
 * [Weather Api](https://openweathermap.org/) - Weer API
+<<<<<<< HEAD
+=======
+
+>>>>>>> a98eb8f48c55ac103955bf6e39f30cf588bf0c6e
 
 ## Versiebeheer
 
@@ -138,7 +142,12 @@ Versiebeheer wordt bijgehouden in GitHub. Voor alle versies kan de [GitHub](http
 ## Acknowledgments
 
 * Iron Man the movie
+<<<<<<< HEAD
 * Bjorn Hamels
 * Richard Stam
 * Thomas Sauijp
 
+=======
+* Bjorn 
+* Richard 
+>>>>>>> a98eb8f48c55ac103955bf6e39f30cf588bf0c6e
