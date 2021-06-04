@@ -25,10 +25,11 @@ from ip_address import bridge_ip_address
 from phue import Bridge             #aansturen van lampen
 from requests.structures import CaseInsensitiveDict
 
-
+#haalt de microfoon op
 def takeCommand():
 	r = sr.Recognizer()                         #aansturen van de microfoon 
 
+#opent de json file (in dezelfde map)
 with open('assistentconfig.json') as bestand:   #openen config bestand
     config = json.load(bestand)
 gmailpassword = config["mail"]['mailPassword']  #variabelen aanmaken vanuit json
@@ -36,6 +37,7 @@ mail = config['mail']["email"]
 newsapi = config["nieuws"]['newsapi']
 weerapi = config["weer"]['weerapi']
 
+#slaat de gesproken zin op in de variabele text
 def speak(text):
     tts = gTTS(text=text, lang="nl")                        #bepaling taal voor gtts
     date_string = datetime.now().strftime("%d%m%Y%H%M%S")   #slaat bestanden op met datum tijd
@@ -43,6 +45,7 @@ def speak(text):
     tts.save(filename)                                      #file wordt opgeslagen
     playsound.playsound(filename)
 
+#haalt instellingen email op in de variabele sendEmail
 def sendEmail(to, content):                             #gebruik de email library
 	server = smtplib.SMTP('smtp.gmail.com', 587)        #gebruik poort 587 icm smtp mail
 	server.ehlo()                                       #smtp protocol client
@@ -53,11 +56,13 @@ def sendEmail(to, content):                             #gebruik de email librar
 	server.sendmail(mail, to, content)                  #verstuurd mail
 	server.close()                                      #connectie wordt verbroken
 
+#haalt instellimgen op van de lampen 
 def access_lights(bridge_ip_address):                   #lampen aansturen
     b = Bridge(bridge_ip_address)                       #zoekt ip address uit bestand
     light_names_list = b.get_light_objects('name')      #haalt namen van lampen
     return light_names_list                             #stuurt namen terug
 
+#zet de lampen aan icm disco
 def danger_mode():                                      #functie lampen aanzetten
     lights = access_lights(bridge_ip_address)           #zoekt ip addres bridge
     time.sleep(1)                                       #lampen doen 1 seconde 
@@ -71,12 +76,14 @@ def danger_mode():                                      #functie lampen aanzette
         lights[light].hue = 7000                        #lampen geel
         lights[light].saturation = 100                  
 
-def uit():                                              #zet de lampen uit
+#zet de lampen uit 
+def uit():                                              
     lights = access_lights(bridge_ip_address)
     for light in lights:
         lights[light].on = False                        #uit
 
-def get_audio():                    #haalt audio op
+#haalt de audio instellingen op
+def get_audio():                   
     r = sr.Recognizer()             #r variabele microfoon
     with sr.Microphone() as source: # gebruik de standaardmicrofoon als audiobron
         audio = r.listen(source)    # luister naar de eerste zin en extraheer deze in audiogegevens
@@ -100,24 +107,21 @@ if __name__ == '__main__':                          #zorgt ervoor dat clear scre
     # command before execution of this python file
     clear()
 
-
-
-     
     while True:
          
-        text = get_audio().lower()          #de text wordt omgezet in lowercase 
+        text = get_audio().lower()                  #de text wordt omgezet in lowercase 
 
         if "hallo" in text:
-            hour = int(datetime.now().hour)  #tussen 0:00 en 12:00 goedemorgen
+            hour = int(datetime.now().hour)         #tussen 0:00 en 12:00 goedemorgen
             if hour>= 0 and hour<12:
                 speak("Goede morgen deze morgen !")
             
             
-            elif hour>= 12 and hour<18:               #tussen 12:00-18:00 goedemiddag
+            elif hour>= 12 and hour<18:              #tussen 12:00-18:00 goedemiddag
                 speak("Goedemiddag deze middag") 
 
             else:
-                speak("Goedeavond deze avond!")           #de rest is goedenavond
+                speak("Goedeavond deze avond!")       #de rest is goedenavond
 
             speak("Hoe zal ik je noemen")             #creeen van een gebruikersnaam
             uname = get_audio()
@@ -125,9 +129,9 @@ if __name__ == '__main__':                          #zorgt ervoor dat clear scre
             speak(uname)
             columns = shutil.get_terminal_size().columns    #zet de naam weer in overzichtelijke weergave
             
-            print("#######################################".center(columns))  ####
+            print("#######################################".center(columns))  
             print("Welkom Mr.", uname.center(columns))     #gebruikersnaam
-            print("#######################################".center(columns))  ###
+            print("#######################################".center(columns))  
             
             speak("Hoe kan ik je helpen")
 
@@ -196,15 +200,15 @@ if __name__ == '__main__':                          #zorgt ervoor dat clear scre
             webbrowser.open("https://www.google.nl/maps/place/" + query + "")   #zoekt op base url icm query
 
         elif "camera" in text or "foto" in text:
-            (ec.capture(0,False,"img.jpg"))         #maakt foto onder naam img.jpg
+            (ec.capture(0,False,"img.jpg"))                       #maakt foto onder naam img.jpg
             speak("Foto is gemaakt")
 
         elif "maak een notitie" in text:
             speak("wat moet ik noteren?")
-            note = get_audio()                  #spraak in variabele note
-            file = open('jarvis.txt', 'w')      #creeerd een file jarvis.txt
+            note = get_audio()                                    #spraak in variabele note
+            file = open('jarvis.txt', 'w')                        #creeerd een file jarvis.txt
             speak("Moet ik de datum en tijd bijvoegen")
-            snfm = get_audio()                  #vraagt naar datum en tijd
+            snfm = get_audio()                                    #vraagt naar datum en tijd
             if 'ja' in snfm or 'okay' in snfm or 'goed' in snfm:  #akkoord in spraak    
                 strTime = datetime.now().strftime("%d-%m")        #haalt datum op
                 file.write(strTime)                               #zet datum in notitie
@@ -216,11 +220,11 @@ if __name__ == '__main__':                          #zorgt ervoor dat clear scre
 
         elif "notitie inzien" in text:
             speak("notitie laten zien")
-            file = open("jarvis.txt", "r")                        #haalt notitie op
-            speak(file.read())                                    #spreekt file text uiy
+            file = open("jarvis.txt", "r")                      #haalt notitie op
+            speak(file.read())                                  #spreekt file text uiy
             
 
-        elif 'verstuur mail' in text:                          #openen van mail door user
+        elif 'verstuur mail' in text:                            #openen van mail door user
             try:
                 speak("wat moet ik zeggen")                     #jarvis vraagt om text in mail
                 content = get_audio()                           #vraagt voor commando en vult dit in in terminal
@@ -230,7 +234,7 @@ if __name__ == '__main__':                          #zorgt ervoor dat clear scre
                 speak("de email is verstuurd!")                 #jarvis bevestigd
             except Exception as e:                              #email kan niet verstuurd worden
                 print(e)
-                speak("ik kan de mail niet versturen")       #jarvis bevestigd
+                speak("ik kan de mail niet versturen")          #jarvis bevestigd
 
     
 
@@ -242,34 +246,34 @@ if __name__ == '__main__':                          #zorgt ervoor dat clear scre
             print("Stad naam : " + city_name)                                
             complete_url = base_url + "appid=" + weerapi + "&q=" + city_name +"&units=metric"   #vormt de complete url
             response = requests.get(complete_url)                           #vraagt response api
-            x = response.json()
+            output = response.json()
 
-            if x["cod"] != "404":                                           #als code geen error geeft
+            if output["cod"] != "404":                                      #als code geen error geeft
   
                 # sla de waarde van "main" op
                 # key variabele y in
-                y = x["main"]
+                complete_output = output["main"]
             
                 # sla de corresponderende waarde op
                 # naar de "temp" -toets van y
-                current_temperature = y["temp"]
+                current_temperature = complete_output["temp"]
             
                 # sla de corresponderende waarde op
                 # op de "lucht druk van y
-                current_pressure = y["pressure"]
+                current_pressure = complete_output["pressure"]
             
                 # sla de corresponderende waarde op
                 # op de regenverwachting van y
-                current_humidiy = y["humidity"]
+                current_humidiy = complete_output["humidity"]
             
                 # sla de corresponderende waarde op
                 # op de weer van y
-                z = x["weather"]
+                verwachting = output["weather"]
             
                 # sla de corresponderende waarde op
                 # naar de "beschrijving" key op
                 # de 0e index van z
-                weather_description = z[0]["description"]
+                weather_description = verwachting[0]["description"]
             
                 #print de volgende waardes
                 speak(" Temperatuur = " +
@@ -281,7 +285,7 @@ if __name__ == '__main__':                          #zorgt ervoor dat clear scre
                     "\n Weersbeschrijving = " +
                                 str(weather_description))
             
-            else:                                   #als 404 als output komt
+            else:                                                                           #als 404 als output komt
                 print(" Stad niet gevonden ")
 
         elif "servers" in text or "server" in text:
